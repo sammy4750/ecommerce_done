@@ -1,0 +1,85 @@
+{%extends 'master.html'%}
+    {%block content%}
+    {% load static %}
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Login/Register</h1>
+					<nav class="d-flex align-items-center">
+						<a href="/home">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="/login">Login/Register</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Login Box Area =================-->
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="login_form_inner">
+						<h3>Register</h3>
+						<p>
+							{% if login_form.non_field_errors %}
+								<h5 style="color: brown;">{{login_form.non_field_errors}}</h5>
+							{% endif %}
+						</p>
+						<form class="row login_form" action="" method="POST" id="contactForm" >
+							{% csrf_token %}
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="first_name" placeholder="First Name" >
+                            </div>
+                            <div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="last_name" placeholder="Last Name" >
+                            </div>
+                            <div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="username" placeholder="Username" >
+                            </div>
+                            <div class="col-md-12 form-group">
+								<input type="email" class="form-control" id="name" name="email" placeholder="E-mail id" >
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="name" name="password1" placeholder="Password" >
+                            </div>
+                            <div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="name" name="password2" placeholder="Confirm Password" >
+							</div>
+							<div class="col-md-12 form-group">
+								<input required type="text" class="form-control" id="exampleName" name="mobile"  placeholder="Mobile"  >
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" placeholder="Address 1" class="form-control" id="add1" name="address1">
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" placeholder="Address 2" class="form-control" id="add2" name="address2">
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" placeholder="City" class="form-control" id="city" name="city">
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" placeholder="State" class="form-control" id="city" name="state">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <input type="text" class="form-control" id="zip" name="zipcode" placeholder="Postcode/ZIP">
+							</div>
+							<div class="col-md-12 form-group p_star">
+                                <input type="text" placeholder="Country" class="form-control" id="add1" name="country">
+                            </div>
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="primary-btn">Sign Up</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+
+	{%endblock%}

@@ -1,0 +1,139 @@
+{%extends 'master.html'%}
+    {%block content%}
+    {% load static %}
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Product Details Page</h1>
+					<nav class="d-flex align-items-center">
+						<a href="/home">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+						<a href="single-product.html">product-details</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Single Product Area =================-->
+
+	<div class="product_image_area">
+		<div class="container">
+			<div class="row s_product_inner">
+				<div class="col-lg-6">
+					{% for product in products %}
+
+						<div class="single-prd-item">
+							<img style="width: 400px; height: 500px;" class="img-fluid" src="{{product.imageURL}}" alt="">
+					</div>
+				</div>
+				<!-- {% for product in products %} -->
+				<div class="col-lg-5 offset-lg-1">
+
+
+					<div class="s_product_text">
+						<h3>{{product.name}}</h3>
+						<h2>Rs. {{product.price}}</h2>
+						<ul class="list">
+							<li><a class="active" href="#"><span>Category</span> : {{product.category}}</a></li>
+							<li><a href="#"><span>Availibility</span> : <a style="color: black;">{% if stock %}Available in Stock </a><span style="color: red;font-size:14px;"><b style="color: red;">({{stock}} left)</b></span>
+							{% else %} {{oos}}	{% endif %}</a></li>
+						</ul>
+						<p>{{product.description}}</p>
+						<!-- {% if stock %} -->
+						<div class="card_area d-flex align-items-center">
+							<a class="primary-btn" href="{{product.get_add_to_cart_url}}">Add to Cart</a>
+						</div>
+						<!-- {% endif %} -->
+					</div>
+					{% endfor %}
+				</div>
+				<!-- {% endfor %} -->
+			</div>
+		</div>
+	</div>
+
+	<section class="brand-area section_gap">
+		<div class="container">
+			<div class="row">
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="img/brand/1.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="img/brand/2.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="img/brand/3.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="img/brand/4.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="img/brand/5.png" alt="">
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="related-product-area section_gap_bottom">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="section-title">
+						<h1>Similar items</h1>
+						<p>Have a look at the items similar to the above product.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-9">
+					<div class="row">
+						{% for s in similar %}
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="{{s.get_absolute_url}}"><img style="width:100px; height:150px;text-align:center; vertical-align:middle" src="{{s.imageURL}}" alt=""></a>
+								<div class="desc">
+									<a href="{{s.get_absolute_url}}" class="title">{{s.name}}</a>
+									<div class="price">
+										<h6>Rs. {{s.price}}</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+
+	<!-- Start related-product Area -->
+	<section class="brand-area section_gap">
+		<div class="container">
+			<div class="row">
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="img/brand/1.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="img/brand/2.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="img/brand/3.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="img/brand/4.png" alt="">
+				</a>
+				<a class="col single-img" href="#">
+					<img class="img-fluid d-block mx-auto" src="img/brand/5.png" alt="">
+				</a>
+			</div>
+		</div>
+	</section>
+	<!-- End related-product Area -->
+
+	{%endblock%}

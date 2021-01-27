@@ -1,0 +1,121 @@
+{%extends 'master.html'%}
+    {%block content%}
+    {% load static %}
+
+    <section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6">
+					<div class="login_form_inner">
+						<h3	>User Profile</h3>
+						<p>
+							{% if login_form.non_field_errors %}
+								<h5 style="color: red;">{{login_form.non_field_errors}}</h5	>
+							{% endif %}
+						</p>
+						<div>
+							
+							<!-- {% for u in edits %} -->
+							    <ul class="">
+								<li class="list-group-item">
+									<div class="widget-content p-0">
+										<div class="widget-content-wrapper">
+											<div class="widget-content-left">
+												<div class="row justify-content-left" style="margin-left: 10px;">
+												<div class="widget-heading"><i class="fas fa-user"></i></div>
+												<div class="widget-heading">&nbsp&nbsp&nbsp<b>First Name: </b></div>
+												<p class="justify-content-left">&nbsp &nbsp{{u}}</p>
+											</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<!-- {% endfor %} -->
+						</div>
+						
+                        <form method="POST" action="{% url 'editprofile' %}">
+							{% csrf_token %}
+							<!-- {{ form.as_p }} -->
+							<div class="col-md-12 form-group">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">Username</div><br>
+								</div>
+								<input required value="{{user.username}}" type="text" class="form-control" id="exampleName" name="username"  placeholder="UserName"  >
+							</div>
+							<div class="col-md-12 form-group">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">Firstname</div><br>
+								</div>
+								<input required value="{{user.first_name}}" type="text" class="form-control" id="exampleName" name="first_name"  placeholder="First Name"  >
+							</div>
+							<div class="col-md-12 form-group">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">Lastname</div><br>
+								</div>
+								<input required value="{{user.last_name}}" type="text" class="form-control" id="exampleName" name="last_name"  placeholder="Last name"  >
+                            </div>
+							<div class="col-md-12 form-group">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">Email</div><br>
+								</div>
+								<input required readonly value="{{user.email}}" type="email" class="form-control" id="exampleEmail" name="email"  placeholder="Email" >
+							</div>	
+							<!-- <div class="col-md-12 form-group">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">Mobile</div><br>
+								</div>
+								<input required value="{{user.mobile}}" type="text" class="form-control" id="exampleName" name="mobile"  placeholder="Mobile"  >
+                            </div> -->
+							<!-- {% for u in mobile %} -->
+							<!-- {% endfor %} -->
+							
+							<!-- {% for u in address %}
+							<div class="col-md-12 form-group p_star">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">Address1</div><br>
+								</div>
+                                <input value="{{u.address1}}" type="text" placeholder="address1" class="form-control" id="city" name="address1">
+							</div>
+							<div class="col-md-12 form-group p_star">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">Address2</div><br>
+								</div>
+                                <input value="{{u.address2}}" type="text" placeholder="address2" class="form-control" id="city" name="address2">
+							</div>
+							<div class="col-md-12 form-group p_star">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">Country</div><br>
+								</div>
+                                <input value="{{u.country}}" type="text" placeholder="State" class="form-control" id="city" name="country">
+							</div>
+							<div class="col-md-12 form-group p_star">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">State</div><br>
+								</div>
+                                <input value="{{u.state}}" type="text" placeholder="State" class="form-control" id="city" name="state">
+							</div>
+							<div class="col-md-12 form-group p_star">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">City</div><br>
+								</div>
+                                <input value="{{u.city}}" type="text" placeholder="State" class="form-control" id="city" name="city">
+							</div>
+							<div class="col-md-12 form-group p_star">
+								<div class="row justify-content-left">
+									<div class="col-sm-1">Zipcode</div><br>
+								</div>
+                                <input value="{{u.zipcode}}" type="text" placeholder="State" class="form-control" id="city" name="zipcode">
+                            </div>
+							{% endfor %} -->
+
+							<input class="btn btn-primary" type="submit" value="Save">
+                        </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    {%endblock%}

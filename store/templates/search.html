@@ -1,0 +1,110 @@
+{%extends 'master.html'%}
+    {%block content%}
+    {% load static %}
+    
+    <section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Shop Category page</h1>
+					<nav class="d-flex align-items-center">
+						<a href="/home">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+						<a href="/category"> Fashion Category </a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+	<div class="container">
+		<div class="row">
+            <!--div class="col-xl-3 col-lg-4 col-md-5">
+				<div class="sidebar-categories">
+					<div class="head">Browse Categories</div>
+						<ul class="main-categories">
+							<li class="main-nav-list">
+								{% for b in total %}
+								<a href="?category={{b.brand}}" >
+										<span class="">
+											{% for k, v in b.items %}
+												({{v}})
+											{% endfor %}
+										</span>
+								</a>
+								<br>
+								{% endfor %}	
+							</li>
+						</ul>
+				</div>
+			</div-->
+			<div class="col-xl-27 col-lg-12 col-md-20">
+				<section class="lattest-product-area pb-40 category-list">
+					<div class="row">
+						<!-- single product -->
+						{% for product in search %}
+                        <div class="col-sm-3">
+                            <div class="single-product">
+                                <a href="{{product.get_absolute_url}}"><img style="width:200px; height:250px;text-align:center; vertical-align:middle" class="card-img-top" class="img-fluid" src="{{product.imageURL}}" alt=""></a>
+                                <div class="product-details">
+                                    <h6><a href="{{product.get_absolute_url}}">{{product.name}}</a></h6>
+                                    <div class="price">
+                                        <p>{{product.get_category_display}}</p>
+                                        <h6>Rs. {{product.price|floatformat:2}}</h6>
+                                    </div>
+                                    <div class="prd-bottom">
+                                        <a data-product={{product.id}} href="{{product.get_add_to_cart_url}}" data-action="add" class="btn btn-primary" > 
+                                            Add to cart
+                                        </a>
+                                    </div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+						<!-- single product -->
+					</div>
+				</section>
+				<!-- End Best Seller -->
+				<!-- Start Filter Bar -->
+				<!-- End Filter Bar -->
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {%endblock%}
